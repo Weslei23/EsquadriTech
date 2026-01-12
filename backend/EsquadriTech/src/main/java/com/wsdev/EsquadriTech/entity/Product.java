@@ -7,7 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table( name = "tb_product" )
+@Table( name = "tb_products" )
 public class Product
 {
     @Id
@@ -20,6 +20,10 @@ public class Product
     private int minQuantity;
     private int maxQuantity;
 
+    @ManyToOne
+    @JoinColumn( name = "supplier_id", nullable = false )
+    private Supplier supplier;
+
     private String category;
     private String code;
 
@@ -29,91 +33,123 @@ public class Product
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public LocalDateTime getUpdatedAt() {
+    public LocalDateTime getUpdatedAt()
+    {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt( LocalDateTime updatedAt )
+    {
         this.updatedAt = updatedAt;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDateTime getCreatedAt()
+    {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt( LocalDateTime createdAt )
+    {
         this.createdAt = createdAt;
     }
 
-    public String getCode() {
+    public String getCode()
+    {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode( String code )
+    {
         this.code = code;
     }
 
-    public String getCategory() {
+    public String getCategory()
+    {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory( String category )
+    {
         this.category = category;
     }
 
-    public int getMaxQuantity() {
+    public int getMaxQuantity()
+    {
         return maxQuantity;
     }
 
-    public void setMaxQuantity(int maxQuantity) {
+    public void setMaxQuantity( int maxQuantity )
+    {
         this.maxQuantity = maxQuantity;
     }
 
-    public int getMinQuantity() {
+    public int getMinQuantity()
+    {
         return minQuantity;
     }
 
-    public void setMinQuantity(int minQuantity) {
+    public void setMinQuantity( int minQuantity )
+    {
         this.minQuantity = minQuantity;
     }
 
-    public int getQuantity() {
+    public int getQuantity()
+    {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity( int quantity )
+    {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
+    public Double getPrice()
+    {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice( Double price )
+    {
         this.price = price;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription( String description )
+    {
         this.description = description;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName( String name )
+    {
         this.name = name;
     }
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId( Long id )
+    {
         this.id = id;
+    }
+
+    public Supplier getSupplier()
+    {
+        return supplier;
+    }
+
+    public void setSupplier( Supplier supplier )
+    {
+        this.supplier = supplier;
     }
 }
