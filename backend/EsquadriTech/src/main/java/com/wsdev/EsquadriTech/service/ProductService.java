@@ -36,7 +36,7 @@ public class ProductService
     public ProductDTO getProductByCode( String code )
     {
         Product product = productRepository.getProductByCode( code ).orElseThrow(() ->
-                new RuntimeException("Product not found with code: " + code ) );
+                new RuntimeException( "Product not found with code: " + code ) );
         return ProductMapper.entityToDto( product );
     }
 
@@ -91,6 +91,7 @@ public class ProductService
         product.setCode( productDTO.getCode() );
         product.setMaxQuantity( productDTO.getMaxQuantity() );
         product.setMinQuantity( productDTO.getMinQuantity() );
+        product.setSupplier( productDTO.getSupplier() );
 
         Product updatedProduct = productRepository.save( product );
 

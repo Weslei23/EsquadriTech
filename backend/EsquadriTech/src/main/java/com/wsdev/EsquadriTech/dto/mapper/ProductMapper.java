@@ -26,6 +26,7 @@ public class ProductMapper
         productDTO.setQuantity( product.getQuantity() );
         productDTO.setMaxQuantity( product.getMaxQuantity() );
         productDTO.setMinQuantity( product.getMinQuantity() );
+        productDTO.setSupplier( product.getSupplier() );
 
         return productDTO;
     }
@@ -49,6 +50,7 @@ public class ProductMapper
         product.setQuantity( productDTO.getQuantity() );
         product.setMaxQuantity( productDTO.getMaxQuantity() );
         product.setMinQuantity( productDTO.getMinQuantity() );
+        product.setSupplier( productDTO.getSupplier() );
 
         return product;
     }

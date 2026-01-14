@@ -1,5 +1,7 @@
 package com.wsdev.EsquadriTech.dto;
 
+import com.wsdev.EsquadriTech.entity.Supplier;
+
 public class ProductDTO
 {
     private Long id;
@@ -11,12 +13,25 @@ public class ProductDTO
     private int maxQuantity;
     private String category;
     private String code;
+    private Supplier supplier;
 
-    public Long getId() {
+    public Supplier getSupplier()
+    {
+        return supplier;
+    }
+
+    public void setSupplier( Supplier supplier )
+    {
+        this.supplier = supplier;
+    }
+
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId( Long id )
+    {
         this.id = id;
     }
 
