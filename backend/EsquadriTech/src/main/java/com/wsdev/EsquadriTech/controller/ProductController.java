@@ -2,8 +2,7 @@ package com.wsdev.EsquadriTech.controller;
 
 import com.wsdev.EsquadriTech.dto.ProductDTO;
 import com.wsdev.EsquadriTech.service.ProductService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,7 @@ public class ProductController
      * @return
      * @throws Exception
      */
+    @GetMapping
     public List<ProductDTO> getProducts() throws Exception
     {
         return productService.getProducts();
@@ -29,7 +29,8 @@ public class ProductController
      * @param category
      * @return
      */
-    public List<ProductDTO> getProductsByCategory( String category )
+    @GetMapping( "/{category}" )
+    public List<ProductDTO> getProductsByCategory( @RequestBody String category )
     {
         return productService.getProductsByCategory( category );
     }
@@ -41,7 +42,8 @@ public class ProductController
      * @return
      * @throws Exception
      */
-    public ProductDTO getProductById( Long id ) throws Exception
+    @GetMapping( "/{id}" )
+    public ProductDTO getProductById( @PathVariable Long id ) throws Exception
     {
         return productService.getProductById( id );
     }
@@ -53,7 +55,8 @@ public class ProductController
      * @return
      * @throws Exception
      */
-    public ProductDTO getProductByCode( String code ) throws Exception
+    @GetMapping( "/{code}" )
+    public ProductDTO getProductByCode( @PathVariable String code ) throws Exception
     {
         return productService.getProductByCode( code );
     }
@@ -64,7 +67,8 @@ public class ProductController
      * @param productDTO
      * @throws Exception
      */
-    public void addProduct( ProductDTO productDTO ) throws Exception
+    @PostMapping( "/addProduct" )
+    public void addProduct( @RequestBody ProductDTO productDTO ) throws Exception
     {
         productService.addProduct( productDTO );
     }
@@ -77,7 +81,8 @@ public class ProductController
      * @return
      * @throws Exception
      */
-    public ProductDTO updateProduct( Long id, ProductDTO productDTO ) throws Exception
+    @PutMapping( "/updateProduct/{id}" )
+    public ProductDTO updateProduct( @PathVariable Long id, @RequestBody ProductDTO productDTO ) throws Exception
     {
         return productService.updateProduct( id, productDTO );
     }
@@ -88,7 +93,8 @@ public class ProductController
      * @param id
      * @throws Exception
      */
-    public void deleteProduct( Long id ) throws Exception
+    @DeleteMapping( "/deleteProduct/{id}" )
+    public void deleteProduct( @PathVariable Long id ) throws Exception
     {
         productService.deleteProductById( id );
     }
@@ -99,6 +105,7 @@ public class ProductController
      * @param code
      * @throws Exception
      */
+    @DeleteMapping( "/deleteProduct/{code}" )
     public void deleteProductByCode( String code ) throws Exception
     {
         productService.deleteProductByCode( code );

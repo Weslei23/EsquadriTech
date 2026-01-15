@@ -2,9 +2,7 @@ package com.wsdev.EsquadriTech.controller;
 
 import com.wsdev.EsquadriTech.dto.SupplierDTO;
 import com.wsdev.EsquadriTech.service.SupplierService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,7 +10,6 @@ import java.util.List;
 @RequestMapping( "/api/v1/supplier" )
 public class SupplierController
 {
-    @Autowired
     private SupplierService supplierService;
 
     /**
@@ -20,6 +17,7 @@ public class SupplierController
      * @return
      * @throws Exception
      */
+    @GetMapping
     public List<SupplierDTO> getSuppliers() throws Exception
     {
         return supplierService.getSuppliers();
@@ -31,7 +29,8 @@ public class SupplierController
      * @return
      * @throws Exception
      */
-    public SupplierDTO getSupplier( Long id ) throws Exception
+    @GetMapping( "/{id}" )
+    public SupplierDTO getSupplier( @PathVariable Long id ) throws Exception
     {
         return supplierService.getSupplierById( id );
     }
@@ -41,7 +40,8 @@ public class SupplierController
      * @param supplierDTO
      * @throws Exception
      */
-    public void addSupplier( SupplierDTO supplierDTO ) throws Exception
+    @PostMapping( "/addSupplier" )
+    public void addSupplier( @RequestBody SupplierDTO supplierDTO ) throws Exception
     {
         supplierService.addSupplier( supplierDTO );
     }
@@ -53,7 +53,8 @@ public class SupplierController
      * @return
      * @throws Exception
      */
-    public SupplierDTO updateSupplier( Long id, SupplierDTO supplierDTO ) throws Exception
+    @PutMapping( "/updateSupplier/{id}" )
+    public SupplierDTO updateSupplier( @PathVariable Long id, @RequestBody SupplierDTO supplierDTO ) throws Exception
     {
         supplierService.updateSupplier( id, supplierDTO );
         return supplierDTO;
@@ -64,7 +65,8 @@ public class SupplierController
      * @param id
      * @throws Exception
      */
-    public void deleteSupplier( Long id ) throws Exception
+    @DeleteMapping( "/deleteSupplier/{id}" )
+    public void deleteSupplier( @PathVariable Long id ) throws Exception
     {
         supplierService.deleteSupplier( id );
     }
