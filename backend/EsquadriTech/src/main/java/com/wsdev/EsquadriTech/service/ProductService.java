@@ -4,17 +4,17 @@ import com.wsdev.EsquadriTech.dto.ProductDTO;
 import com.wsdev.EsquadriTech.dto.mapper.ProductMapper;
 import com.wsdev.EsquadriTech.entity.Product;
 import com.wsdev.EsquadriTech.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductService
 {
+    @Autowired
     private ProductRepository productRepository;
 
-    public ProductService( ProductRepository productRepository )
-    {
-        this.productRepository = productRepository;
-    }
 
     /**
      *  Return product by id.

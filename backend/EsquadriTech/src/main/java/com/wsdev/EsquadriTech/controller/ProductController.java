@@ -2,6 +2,7 @@ package com.wsdev.EsquadriTech.controller;
 
 import com.wsdev.EsquadriTech.dto.ProductDTO;
 import com.wsdev.EsquadriTech.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @RequestMapping( "/api/v1/product" )
 public class ProductController
 {
+    @Autowired
     private ProductService productService;
 
     /**
