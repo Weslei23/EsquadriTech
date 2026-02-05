@@ -4,11 +4,15 @@ import com.wsdev.EsquadriTech.dto.SupplierDTO;
 import com.wsdev.EsquadriTech.dto.mapper.SupplierMapper;
 import com.wsdev.EsquadriTech.entity.Supplier;
 import com.wsdev.EsquadriTech.repository.SupplierRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SupplierService
 {
+    @Autowired
     private SupplierRepository supplierRepository;
 
     /**

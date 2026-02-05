@@ -1,14 +1,15 @@
 package com.wsdev.EsquadriTech.dto;
 
+import com.wsdev.EsquadriTech.entity.Product;
+import com.wsdev.EsquadriTech.enums.StockMovementType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class StockMovementRequestDTO
 {
-
     @NotNull
-    private Long productId;
+    private ProductDTO productId;
 
     @NotNull
     private Integer typeCode;
@@ -19,16 +20,24 @@ public class StockMovementRequestDTO
 
     @Size(max = 255)
     private String info;
+    private StockMovementType type;
 
     @Size(max = 50)
     private String numOrder;
 
-    public Long getProductId()
+    public StockMovementType getType() {
+        return type;
+    }
+
+    public void setType(StockMovementType type) {
+        this.type = type;
+    }
+    public ProductDTO getProductId()
     {
         return productId;
     }
 
-    public void setProductId( Long productId )
+    public void setProductId( ProductDTO productId )
     {
         this.productId = productId;
     }
